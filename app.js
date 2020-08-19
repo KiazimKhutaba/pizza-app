@@ -1,32 +1,98 @@
-import PizzaApp from './js/PizzaApp.js';
-import ProductView from './js/ProductView.js';
+import { el } from './js/helpers.js';
+import LocalStorageDB from './js/LocalStorageDB.js';
+import Cart from './js/Component/Cart.js';
+import CartView from './js/Container/CartView.js';
+import LoginView from './js/Container/LoginView.js';
+import ProductsList from './js/Container/ProductsList.js';
 import pizzasList from './js/data.js';
-import { el, log } from './js/helpers.js';
 
+
+const APP_NAME = 'PizzaApp';
 
 
 function main() 
 {
     let root = el('.products-list__items');
 
-    // add pizzas to DOM
-    pizzasList.forEach(pizza => root.innerHTML += ProductView(pizza))
-
-    // after get buttons
-    let addButtons = el('.actions__add', true);
-    let removeButton = el('.actions__remove', true);
-    let quantity = el('.actions__quantity');
+    const Views = {
+        main: ProductsList,
+        cart: CartView, 
+        login: LoginView 
+    };
 
 
+    
+
+    document.addEventListener('click', e => {
+
+        // stop propagination
+        e.preventDefault();
+
+        // if we click on hyperlink
+        if( e.target instanceof HTMLAnchorElement ) {
+            
+            const { hash } = new URL(e.target.href)
+            //log(hash.slice(1))
+
+            root.innerHTML = Views[hash.slice(1)]();
+            location.hash = hash;
+        }
+
+    })
+
+
+    root.innerHTML = ProductsList(pizzasList);
+
+    /**
+     * 
+     * Product card actions
+     */
     root.addEventListener('click', (e) => {
-        
-        log(e.target);
-    });
+    
+        const Actions = {
+            PRODUCT_ADD:    'product.add',
+            PRODUCT_REMOVE: 'product.remove',
+            CART_ADD:       'card.add'
+        };
 
-    // assing event listener for button
-    // Array
-    //     .from(addButtons)
-    //     .forEach(btn => btn.addEventListener('click', e => alert(e)))
+        //log('Element dataset: ', e.target.className);
+
+        // handle action buttons events
+        if( e.target.className.startsWith('actions__') )
+        {
+            let product = e.target.closest('div.product').dataset;
+            let action  = e.target && e.target.dataset.action; // dataset can be empty
+            let productCount = el('#product-count-' + product.id);
+
+
+            const db = new LocalStorageDB(APP_NAME);
+            const cart = new Cart(db);
+        
+
+            //log('action', action, ', product.id', product.id, ', product.count', productCount.textContent)
+
+            if( Actions.PRODUCT_ADD === action ) {
+                productCount.textContent = +productCount.textContent + 1;
+                cart.add(product.id, product);
+            }
+
+
+            if( Actions.PRODUCT_REMOVE === action ) {
+
+                let count = +productCount.textContent;
+                if( count === 0 ) return;
+
+                productCount.textContent = +productCount.textContent - 1;
+                cart.remove(product.id);
+            }
+
+            if( Actions.CART_ADD === action ) {
+                e.target.disabled = true;
+                e.target.style.background = 'grey';
+            }
+        }
+    })
+
 }
 
 

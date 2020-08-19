@@ -4,7 +4,6 @@ class LocalStorageDB
 
     constructor(dbPrefix) {
 
-        //console.warn('LocalStorageDb object created');
         this.dbPrefix = dbPrefix + '@';
     }
 
@@ -53,6 +52,11 @@ class LocalStorageDB
     }
 
 
+    /**
+     * Delete specific key
+     * 
+     * @param {string} key key name
+     */
     delete(key) {
         localStorage.removeItem(this.dbPrefix + key);
     }
@@ -63,6 +67,9 @@ class LocalStorageDB
     }
 
 
+    /**
+     * Delete only keys with prefix
+     */
     drop() {
 
         for( let i=0; i < this.rowsCount(); i++ ) {
