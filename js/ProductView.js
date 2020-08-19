@@ -8,7 +8,7 @@ const  ProductView = (pizza) => {
             <img src="${image}" alt="pizza" class="product__image">
             <div class="product__name">${name}</div>
             <div class="product__description">${desc}</div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr">
+            <div style="display: grid; grid-template-columns: 1fr 2fr">
                 <div class="product__price">
                     <span class="product__price-currency">${currency}</span>${price}
                 </div>
