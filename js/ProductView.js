@@ -3,7 +3,7 @@ import RatingStars from './RatingStars.js';
 
 const  ProductView = (pizza) => {
 
-    const { name, image, desc, price, currency } = pizza;
+    const { name, image, desc, rating, price, currency } = pizza;
 
 
     return /* html */`
@@ -11,7 +11,7 @@ const  ProductView = (pizza) => {
             <img src="${image}" alt="pizza" class="product__image">
             <div class="product__text">
                 <div class="product__name">${name}</div>
-                ${RatingStars()}
+                ${RatingStars(rating)}
                 <div class="product__description">${desc}</div>
                 <div class="product__bottom">
                     <div class="product__price">
