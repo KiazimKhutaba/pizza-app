@@ -1,0 +1,13 @@
+.rating {
+    font-size: 18px;
+    text-align: left;
+    padding-left: 15px;
+}
+
+.rating__star {
+    color: grey;
+}
+
+.rating__star--checked {
+    color: yellow;
+}

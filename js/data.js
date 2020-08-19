@@ -31,7 +31,7 @@ const pizzasList = [
     {
         name:  'Pizza Prosciutto crudo',
         image: 'https://straus.s3.amazonaws.com/media/products2/21920_big.jpg?version=1576470756',
-        desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, possimus',
+        desc: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio odio, earum molestiae ',
         price: 34.15,
         currency: '$'
     },

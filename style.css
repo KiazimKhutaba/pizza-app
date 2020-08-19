@@ -1,3 +1,5 @@
+@import 'rating.css';
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -24,6 +26,7 @@ body {
 }
 
 .header__logo {
+    text-shadow: 2px 2px #FF0000;
     color: orange;
 }
 
@@ -82,9 +85,14 @@ body {
 
 .product {
     background-color: #ffffff;
-    padding-bottom: 25px;
+    padding-bottom: 15px;
     border-radius: 5px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.product__text {
+    display: grid;
+    grid-template-rows: 1fr 30px 2fr 1fr;
 }
 
 .product__name {
@@ -99,6 +107,7 @@ body {
 .product__image {
     max-width: 100%;
     width: 100%;
+    height: 200px;
     object-fit: cover;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -109,6 +118,12 @@ body {
     border-top: none;
     border-bottom: none;
     padding: 5px 15px;
+}
+
+.product__bottom {
+    display: grid; 
+    grid-template-columns: 1fr 2fr;
+    align-self: end;
 }
 
 .product__price {
@@ -127,6 +142,9 @@ body {
     border-top: none;
     border-bottom: none;
     text-align: left;
+    justify-self:end; 
+    padding-top: 10px; 
+    padding-right: 15px
 }
 
 
