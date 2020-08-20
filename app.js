@@ -1,10 +1,10 @@
-import { el } from './js/helpers.js';
+import { el, log } from './js/helpers.js';
 import LocalStorageDB from './js/LocalStorageDB.js';
 import Cart from './js/Component/Cart.js';
 import CartView from './js/Container/CartView.js';
 import LoginView from './js/Container/LoginView.js';
 import ProductsList from './js/Container/ProductsList.js';
-import pizzasList from './js/data.js';
+import NotFound from './js/Container/NotFound.js';
 
 
 const APP_NAME = 'PizzaApp';
@@ -14,41 +14,92 @@ const APP_NAME = 'PizzaApp';
  * 
  * @param {Document} element 
  */
-function Router(element, screens)
+function Router(app, screens)
 {
-    element.addEventListener('click', e => {
 
-        // stop propagination
-        e.preventDefault();
+    const hashChangeHandler = (e) => {
 
-        // if we click on hyperlink
-        if( e.target instanceof HTMLAnchorElement ) {
-            
-            const { hash } = new URL(e.target.href)
-            //log(hash.slice(1))
+        const { hash } = new URL(e.newURL);
+        //log(!!hash);
 
-            root.innerHTML = screens[hash.slice(1)]();
-            location.hash = hash;
+        // if hash empty - this is regular link
+        if( 0 == hash.length ) {
+            return;
         }
 
-    })
+        if( hash.startsWith('#!') ) 
+        {
+            // stop propagination
+            e.preventDefault();
+
+            const Component = screens[hash.slice(2)];
+
+            //log(screen);
+
+            if( !Component ) {
+                app.innerHTML = NotFound(hash.slice(2));
+            }
+            else {
+                app.innerHTML = Component();
+            }
+
+            
+            location.hash = hash;
+        }
+    }
+    
+    
+    app.innerHTML = screens['main']();
+    window.addEventListener('hashchange', hashChangeHandler);
+
+
+    
+
+    // element.addEventListener('click', e => {
+
+    //     // if we click on hyperlink
+    //     if( e.target instanceof HTMLAnchorElement ) 
+    //     {  
+    //         const { hash } = new URL(e.target.href);
+    //         //log(!!hash);
+
+    //         // if hash empty - this is regular link
+    //         if( 0 == hash.length ) {
+    //             return;
+    //         }
+
+    //         if( hash.startsWith('#!') ) 
+    //         {
+    //             // stop propagination
+    //             e.preventDefault();
+
+    //             app.innerHTML = screens[hash.slice(2)]();
+    //             location.hash = hash;
+    //         }
+    //     }
+
+    // })
 }
 
 
 function main() 
 {
+    let app = el('#app');
     let root = el('.products-list__items');
 
-    const Views = {
-        main: ProductsList,
-        cart: CartView, 
-        login: LoginView 
+
+    const screens = {
+        'main': ProductsList,
+        'cart': CartView, 
+        'login': LoginView
     };
 
 
 
+    Router(app, screens);
 
-    root.innerHTML = ProductsList(pizzasList);
+
+    //app.innerHTML = ProductsList();
 
     /**
      * 

@@ -4,11 +4,20 @@ import pizzasList from '../data.js';
 
 function ProductsList()
 {
-    let list = '';
+    let items = '';
 
-     // add pizzas to DOM
-    pizzasList.forEach((pizza) => list += ProductView(pizza))
+    pizzasList.forEach(pizza => items += ProductView(pizza))
 
+
+    let list = /* html */`
+        <div class="products-list">
+            <h2 class="products-list__title">Most Popular Pizzas</h2>
+
+            <div class="products-list__items">${items}</div>
+        </div>
+    `;
+
+   
     return list;
 }
 

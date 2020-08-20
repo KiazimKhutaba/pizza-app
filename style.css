@@ -12,8 +12,12 @@ body {
 }
 
 .container {
-   width: 100%; 
+    width: 100%; 
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: 74px auto 60px;
 }
+
 
 
 /** Header */
