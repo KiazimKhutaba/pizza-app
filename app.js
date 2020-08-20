@@ -10,6 +10,31 @@ import pizzasList from './js/data.js';
 const APP_NAME = 'PizzaApp';
 
 
+/**
+ * 
+ * @param {Document} element 
+ */
+function Router(element, screens)
+{
+    element.addEventListener('click', e => {
+
+        // stop propagination
+        e.preventDefault();
+
+        // if we click on hyperlink
+        if( e.target instanceof HTMLAnchorElement ) {
+            
+            const { hash } = new URL(e.target.href)
+            //log(hash.slice(1))
+
+            root.innerHTML = screens[hash.slice(1)]();
+            location.hash = hash;
+        }
+
+    })
+}
+
+
 function main() 
 {
     let root = el('.products-list__items');
@@ -21,23 +46,6 @@ function main()
     };
 
 
-    
-
-    document.addEventListener('click', e => {
-
-        // stop propagination
-        e.preventDefault();
-
-        // if we click on hyperlink
-        if( e.target instanceof HTMLAnchorElement ) {
-            
-            const { hash } = new URL(e.target.href)
-            //log(hash.slice(1))
-
-            root.innerHTML = Views[hash.slice(1)]();
-        }
-
-    })
 
 
     root.innerHTML = ProductsList(pizzasList);
