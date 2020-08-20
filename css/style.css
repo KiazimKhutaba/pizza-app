@@ -12,11 +12,25 @@ body {
 }
 
 .container {
-   width: 100%; 
+    width: 100%;
+    max-width: 1367px;
+    margin: 0 auto;
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: 80px auto 60px;
 }
 
+.credits {
+    font-size: 0.8em;
+    color: grey;
+}
+
+#app {
+    padding: 15px 30px;
+}
 
 /** Header */
+
 .header {
     background-color: #fff;
     padding: 15px;
@@ -38,16 +52,22 @@ body {
 .header__links {
     justify-self: end;
     padding-top: 12px;
+    padding-bottom: 5px;
 }
 
-.header__links > span {
+.header__links a {
+    padding-right: 15px;
+    color: rgb(156, 156, 156);
+}
+
+.header__links>span {
     padding: 0 5px;
-
 }
+
 /** Header */
 
-
 /** Footer */
+
 .footer {
     background-color: #fff;
     color: grey;
@@ -55,21 +75,19 @@ body {
     border-top: 1px solid #ddd;
 }
 
-
 .products-list__title {
-    margin: 15px;
     color: #e6670d;
+    padding-bottom: 15px;
 }
 
 /** Products List */
+
 .products-list__items {
-    padding: 15px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
     gap: 30px;
 }
-
 
 @media screen and (max-width: 500px) {
     .products-list__items {
@@ -85,14 +103,13 @@ body {
     }
 }
 
-
 /** Product */
 
 .product {
     background-color: #ffffff;
     padding-bottom: 15px;
     border-radius: 5px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .product__text {
@@ -126,7 +143,7 @@ body {
 }
 
 .product__bottom {
-    display: grid; 
+    display: grid;
     grid-template-columns: 1fr 2fr;
     align-self: end;
 }
@@ -140,19 +157,16 @@ body {
     color: #6e6e6e;
 }
 
-.product__price-currency {
-
-}
+.product__price-currency {}
 
 .actions {
     border-top: none;
     border-bottom: none;
     text-align: left;
-    justify-self:end; 
-    padding-top: 10px; 
+    justify-self: end;
+    padding-top: 10px;
     padding-right: 15px
 }
-
 
 .actions__add {
     width: 30px;
@@ -190,4 +204,3 @@ body {
     cursor: pointer;
     margin-left: 5px;
 }
-

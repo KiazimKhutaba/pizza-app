@@ -1,4 +1,4 @@
-import LocalStorageDB from '../LocalStorageDB.js';
+import LocalStorageDB from '../Core/LocalStorageDB.js';
 
 /**
  * PizzaApp Cart
