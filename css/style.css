@@ -12,7 +12,9 @@ body {
 }
 
 .container {
-    width: 100%; 
+    width: 100%;
+    max-width: 1367px;
+    margin: 0 auto;
     display: grid;
     min-height: 100vh;
     grid-template-rows: 74px auto 60px;

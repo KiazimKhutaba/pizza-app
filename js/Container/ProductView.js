@@ -1,5 +1,5 @@
 import RatingStars from './RatingStars.js';
-import {log} from '../helpers.js';
+import {log} from '../Core/helpers.js';
 
 
 function ProductView(product)
@@ -8,11 +8,11 @@ function ProductView(product)
 
     return /* html */`
         <div class="product"
-             data-id="${id}"
-             data-name="${name}"
-             data-image="${image}"
-             data-price="${price}"
-             data-currency="${currency}">
+            data-id="${id}"
+            data-name="${name}"
+            data-image="${image}"
+            data-price="${price}"
+            data-currency="${currency}">
 
             <img src="assets/${image}" alt="pizza" class="product__image">
             <div class="product__text">
@@ -33,6 +33,7 @@ function ProductView(product)
             </div>
         </div>
     `;
+    
 }
 
 export default ProductView;
