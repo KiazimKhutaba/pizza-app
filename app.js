@@ -3,6 +3,7 @@ import CartView from './js/Pages/CartView.js';
 import LoginView from './js/Pages/LoginView.js';
 import ProductsList from './js/Pages/ProductsList.js';
 import Router from './js/Core/Router.js';
+import CreditsPage from './js/Pages/CreditsPage.js';
 
 
 
@@ -10,12 +11,11 @@ function main()
 {
     let app = el('#app');
 
-
-
     const screens = {
         'main': ProductsList,
         'cart': CartView, 
-        'login': LoginView
+        'login': LoginView,
+        'credits': CreditsPage,
     };
 
     Router(app, screens);

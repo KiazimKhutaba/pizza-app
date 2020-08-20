@@ -1,5 +1,6 @@
 import NotFound from '../Pages/NotFound.js';
 import ProductsList from '../Pages/ProductsList.js';
+import LoginView from '../Pages/LoginView.js';
 
 
 
@@ -10,8 +11,13 @@ import ProductsList from '../Pages/ProductsList.js';
 const render = (component, args) => {
     
     const obj = new component(args);
+
     app.innerHTML = obj.render();
-    obj.eventHandler();
+
+    // if class contains method eventHandler init method
+    if( typeof obj.eventHandler === 'function' ) {
+        obj.eventHandler();
+    }    
 }
 
 
@@ -46,12 +52,12 @@ function Router(app, screens)
             }
 
             
-            location.hash = hash;
+            //location.hash = hash;
         }
     }
     
     
-    render(ProductsList);
+    render(LoginView);
     window.addEventListener('hashchange', hashChangeHandler);
 }
 

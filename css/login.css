@@ -1,0 +1,48 @@
+.login {
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.login__title {
+    text-align: center;
+    padding: 15px;
+}
+
+.login input[type=text], 
+.login input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #f6ad0a;
+    font-size: 1em;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.rounded-border {
+    border-radius: 5px;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
