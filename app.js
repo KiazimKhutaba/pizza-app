@@ -6,16 +6,17 @@ import Router from './js/Core/Router.js';
 import CreditsPage from './js/Pages/CreditsPage.js';
 
 
-
 function main() 
 {
     let app = el('#app');
+
+    window.el = el;
 
     const screens = {
         'main': ProductsList,
         'cart': CartView, 
         'login': LoginView,
-        'credits': CreditsPage,
+        'credits': CreditsPage
     };
 
     Router(app, screens);

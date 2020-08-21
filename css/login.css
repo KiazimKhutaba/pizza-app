@@ -18,7 +18,7 @@
     box-sizing: border-box;
 }
 
-button {
+.login button {
     background-color: #f6ad0a;
     font-size: 1em;
     color: white;
@@ -29,20 +29,7 @@ button {
     width: 100%;
 }
 
-button:hover {
+.login button:hover {
     opacity: 0.8;
 }
 
-.rounded-border {
-    border-radius: 5px;
-}
-
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-}
-
-.avatar {
-    width: 40%;
-    border-radius: 50%;
-}

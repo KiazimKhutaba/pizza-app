@@ -1,6 +1,7 @@
 import NotFound from '../Pages/NotFound.js';
 import ProductsList from '../Pages/ProductsList.js';
 import LoginView from '../Pages/LoginView.js';
+import CartView from '../Pages/CartView.js';
 
 
 
@@ -57,7 +58,7 @@ function Router(app, screens)
     }
     
     
-    render(ProductsList);
+    render(CartView);
     window.addEventListener('hashchange', hashChangeHandler);
 }
 

@@ -1,5 +1,5 @@
 import ProductView from '../Container/ProductView.js';
-import pizzasList from '../data.js';
+import pizzasList from '../var/data.js';
 import {el} from '../Core/helpers.js';
 import LocalStorageDB from '../Core/LocalStorageDB.js';
 import Cart from '../Component/Cart.js';

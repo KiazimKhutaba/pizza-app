@@ -1,4 +1,7 @@
+@import 'common.css';
 @import 'rating.css';
+@import 'login.css';
+@import 'shopping-cart.css';
 
 * {
     box-sizing: border-box;
@@ -11,7 +14,7 @@ body {
     background-color: #f0f0f0;
 }
 
-.container {
+.app-container {
     width: 100%;
     max-width: 1367px;
     margin: 0 auto;
