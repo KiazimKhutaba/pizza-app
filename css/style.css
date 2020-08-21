@@ -23,6 +23,7 @@ body {
     grid-template-rows: 80px auto 60px;
 }
 
+
 .credits {
     font-size: 0.8em;
     color: grey;
@@ -92,19 +93,16 @@ body {
     gap: 30px;
 }
 
-@media screen and (max-width: 500px) {
+
+@media (max-width: 800px) {
+    
     .products-list__items {
+        display: grid;
         grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 15px;
     }
 }
 
-@media screen and (max-width: 768px) {
-    .products-list__items {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-    }
-}
 
 /** Product */
 
@@ -186,6 +184,8 @@ body {
 .actions__quantity {
     font-weight: bold;
     font-size: 0.96em;
+    display: inline-block;
+    padding: 5px 6px;
 }
 
 .actions__remove {

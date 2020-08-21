@@ -4,6 +4,7 @@ import LoginView from './js/Pages/LoginView.js';
 import ProductsList from './js/Pages/ProductsList.js';
 import Router from './js/Core/Router.js';
 import CreditsPage from './js/Pages/CreditsPage.js';
+import OrderPage from './js/Pages/OrderPage.js';
 
 
 function main() 
@@ -16,7 +17,9 @@ function main()
         'main': ProductsList,
         'cart': CartView, 
         'login': LoginView,
-        'credits': CreditsPage
+        'credits': CreditsPage,
+        'order': OrderPage
+
     };
 
     Router(app, screens);
