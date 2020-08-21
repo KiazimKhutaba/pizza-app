@@ -4,25 +4,80 @@ import cartItems from '../var/cart_data.js';
 
 function OrderSummary() {
     return /* html */`
-        <div class="p-4">
-            <p class="font-italic mb-4">
-                Shipping and additional costs are calculated based on values you have entered.
-            </p>
-            <ul class="list-unstyled mb-4">
-                <li class="d-flex justify-content-between py-3 border-bottom">
+
+        <style>
+
+            .order-summary {
+                padding: 15px;
+            }
+
+            .order-summary h4 {
+                background: #1129a014;
+                padding: 15px 0;
+                padding-left: 15px;
+                text-transform: uppercase;
+                margin-bottom: 15px;
+            }
+
+            .order-summary > p {
+                font: italic;
+                margin-bottom: 20px;
+            }
+            
+            .order-summary > ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                margin-bottom: 20px;
+            }
+
+            .order-summary > ul li {
+                display: flex;
+                justify-content: space-between;
+                padding: 15px 15px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .text-muted {
+                color: #6c757d;
+            }
+
+            .btn {
+                display: block;
+                background-color: orange;
+                color: white;
+                text-decoration: none;
+                padding: 15px;
+                text-align: center;
+                border-radius: 5px;
+            }
+
+            .btn:hover {
+                opacity: 0.8;
+            }
+
+
+        </style>
+
+        <div class="order-summary">
+
+            <h4>Order Summary</h4>
+
+            <ul>
+                <li>
                     <strong class="text-muted">Order Subtotal</strong>
                     <strong>$390.00</strong>
                 </li>
-                <li class="d-flex justify-content-between py-3 border-bottom">
+                <li>
                     <strong class="text-muted">Delivery</strong>
                     <strong>$10.00</strong>
                 </li>
-                <li class="d-flex justify-content-between py-3 border-bottom">
+                <li>
                     <strong class="text-muted">Total</strong>
                     <h5 class="font-weight-bold">$400.00</h5>
                 </li>
             </ul>
-            <a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
+            <a href="#" class="btn">Checkout</a>
         </div>
     `;
 }
@@ -69,22 +124,9 @@ class CartView {
 
     render() {
         return /* html */`
-            <style>
-
-                .cart__box {
-                    display: grid;
-                    grid-template-columns: 2fr 1fr;
-                }
-
-                .cart__box > div {
-                    
-                }
-
-            </style>
-
             <div class="shopping-cart">
                 <!-- Title -->
-                <div class="title">Your shopping cart</div>
+                <div class="title">Your Cart</div>
 
 
                 <div class="cart__box">
