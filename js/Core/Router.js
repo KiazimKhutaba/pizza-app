@@ -58,7 +58,7 @@ function Router(app, screens)
     }
     
     
-    render(CartView);
+    render(ProductsList);
     window.addEventListener('hashchange', hashChangeHandler);
 }
 

@@ -4,61 +4,8 @@ import { el, log } from '../Core/helpers.js';
 
 
 function OrderSummary() {
+    
     return /* html */`
-
-        <style>
-
-            .order-summary {
-                padding: 15px;
-            }
-
-            .order-summary h4 {
-                background: #1129a014;
-                padding: 15px 0;
-                padding-left: 15px;
-                text-transform: uppercase;
-                margin-bottom: 15px;
-            }
-
-            .order-summary > p {
-                font: italic;
-                margin-bottom: 20px;
-            }
-            
-            .order-summary > ul {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-                margin-bottom: 20px;
-            }
-
-            .order-summary > ul li {
-                display: flex;
-                justify-content: space-between;
-                padding: 15px 15px;
-                border-bottom: 1px solid #ddd;
-            }
-
-            .text-muted {
-                color: #6c757d;
-            }
-
-            .btn {
-                display: block;
-                background-color: orange;
-                color: white;
-                text-decoration: none;
-                padding: 15px;
-                text-align: center;
-                border-radius: 5px;
-            }
-
-            .btn:hover {
-                opacity: 0.8;
-            }
-
-
-        </style>
 
         <div class="order-summary">
 

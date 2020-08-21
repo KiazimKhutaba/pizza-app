@@ -11,7 +11,6 @@ function main()
 {
     let app = el('#app');
 
-    window.el = el;
 
     const screens = {
         'main': ProductsList,

@@ -2,6 +2,7 @@
 @import 'rating.css';
 @import 'login.css';
 @import 'shopping-cart.css';
+@import 'order-summary.css';
 
 * {
     box-sizing: border-box;
@@ -23,6 +24,16 @@ body {
     grid-template-rows: 80px auto 60px;
 }
 
+#cart-icon:after {
+    content: ' ';
+    position: absolute;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 10px;
+    border-color: red;
+    margin-top: -5px;
+    margin-left: -15px;
+}
 
 .credits {
     font-size: 0.8em;
