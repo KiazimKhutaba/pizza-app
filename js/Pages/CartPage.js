@@ -68,7 +68,7 @@ function CartItem(data) {
 
 
 
-class CartView 
+class CartPage 
 {
 
     eventHandler() {
@@ -122,7 +122,7 @@ class CartView
 
     render() {
         return /* html */`
-            <div class="shopping-cart">
+            <div class="shopping-cart is-active">
                 <!-- Title -->
                 <div class="title">Your Cart</div>
 
@@ -140,4 +140,4 @@ class CartView
     }
 }
 
-export default CartView;
+export default CartPage;
