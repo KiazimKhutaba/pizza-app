@@ -1,0 +1,8 @@
+.order-history__item {
+    display: flex; 
+    justify-content: space-around;
+}
+
+.order-history__item-name {
+    flex: 1 0 0;
+}

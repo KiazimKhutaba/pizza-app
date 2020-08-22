@@ -20,7 +20,7 @@ function OrderSummary() {
                 </li>
                 <li>
                     <strong class="text-muted">Total</strong>
-                    <h5 class="font-weight-bold">$90.00 / € ${Math.round(90 / 1.1, 2)}</h5>
+                    <h5 class="font-weight-bold">$90.00 / €${Math.round(90 / 1.1, 2)}</h5>
                 </li>
             </ul>
             <a href="#!order" class="btn">Checkout</a>

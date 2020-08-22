@@ -7,7 +7,7 @@ class OrderPage {
 
             <div class="order-form">
                 
-                <div class="order-form__title">Order</div>
+                <div class="order-form__title">Order Form</div>
 
                 <div class="order-form__container">
 

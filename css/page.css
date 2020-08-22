@@ -14,9 +14,19 @@
     font-size: 1.2em;
 }
 
+@media (max-width: 800px) {
+
+    .page__title {
+        text-align: center;
+    }
+}
 
 .page__content {
     text-align: center;
+    padding: 15px;
+}
+
+.page__body {
     padding: 15px;
 }
 

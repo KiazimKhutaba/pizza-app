@@ -15,6 +15,16 @@
     font-size: 1.2em;
 }
 
+
+@media (max-width: 800px) {
+
+    .shopping-cart .title {
+        text-align: center;
+    }
+}
+
+
+
 .shopping-cart .item {
     padding: 20px 30px;
     height: 120px;

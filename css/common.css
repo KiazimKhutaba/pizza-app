@@ -34,3 +34,21 @@
 button {
     outline: none;
 }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+}
+
+th {
+    color: #5E6977;
+}

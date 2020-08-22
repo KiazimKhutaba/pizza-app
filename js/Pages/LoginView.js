@@ -1,8 +1,15 @@
 import UserIcon from '../Container/UserIcon.js';
+import { el } from '../Core/helpers.js';
 
 
 class LoginView {
 
+    eventHandler() {
+        
+        el('#submitLogin').addEventListener('click', e => {
+            location.hash = '!orders/history';
+        });
+    }
 
     render() {
         return /* html */`
@@ -27,7 +34,7 @@ class LoginView {
                             <input class="rounded-border" type="password" placeholder="Enter Password" name="password" required>
                         </label>
                             
-                        <button class="rounded-border" type="submit">Login</button>
+                        <button class="rounded-border" id="submitLogin" type="submit">Login</button>
                     </div>
                 </form>
             </div>

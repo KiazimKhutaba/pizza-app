@@ -4,6 +4,7 @@ import LoginView from '../Pages/LoginView.js';
 import CartPage from '../Pages/CartPage.js';
 import OrderPage from '../Pages/OrderPage.js';
 import OrderReceived from '../Pages/OrderReceived.js';
+import OrdersHistory from '../Pages/OrdersHistory.js';
 
 
 
@@ -58,7 +59,8 @@ function Router(app, screens) {
     }
 
 
-    render(ProductsList);
+    render(OrdersHistory);
+    location.hash = '!orders/history';
     //render(OrderReceived);
     window.addEventListener('hashchange', hashChangeHandler);
 }

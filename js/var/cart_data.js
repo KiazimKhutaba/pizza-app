@@ -15,7 +15,7 @@ function getProduct(items, id) {
  * 
  * @param {Array} items 
  */
-function createCartItems(items) 
+export function createCartItems(items) 
 {
     return function(id, quantity) 
     {

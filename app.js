@@ -6,6 +6,7 @@ import Router from './js/Core/Router.js';
 import CreditsPage from './js/Pages/CreditsPage.js';
 import OrderPage from './js/Pages/OrderPage.js';
 import OrderReceived from './js/Pages/OrderReceived.js';
+import OrdersHistory from './js/Pages/OrdersHistory.js';
 
 
 function main() {
@@ -18,7 +19,8 @@ function main() {
         'login': LoginView,
         'credits': CreditsPage,
         'order': OrderPage,
-        'order/received': OrderReceived
+        'order/received': OrderReceived,
+        'orders/history': OrdersHistory 
     };
 
     Router(app, screens);

@@ -18,3 +18,13 @@ export function el(selector, all = false)
 }
 
 export const log = console.log;
+
+
+/**
+ * 
+ * @param {number} timestamp
+ */
+export function format_date(timestamp) {
+    let dt = new Date(timestamp);
+    return dt.toUTCString();
+}
