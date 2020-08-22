@@ -3,6 +3,7 @@ import ProductsList from '../Pages/ProductsList.js';
 import LoginView from '../Pages/LoginView.js';
 import CartPage from '../Pages/CartPage.js';
 import OrderPage from '../Pages/OrderPage.js';
+import OrderReceived from '../Pages/OrderReceived.js';
 
 
 
@@ -57,7 +58,8 @@ function Router(app, screens) {
     }
 
 
-    render(ProductsList);
+    //render(ProductsList);
+    render(OrderReceived);
     window.addEventListener('hashchange', hashChangeHandler);
 }
 

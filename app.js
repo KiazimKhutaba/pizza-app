@@ -5,6 +5,7 @@ import ProductsList from './js/Pages/ProductsList.js';
 import Router from './js/Core/Router.js';
 import CreditsPage from './js/Pages/CreditsPage.js';
 import OrderPage from './js/Pages/OrderPage.js';
+import OrderReceived from './js/Pages/OrderReceived.js';
 
 
 function main() {
@@ -16,7 +17,8 @@ function main() {
         'cart': CartPage,
         'login': LoginView,
         'credits': CreditsPage,
-        'order': OrderPage
+        'order': OrderPage,
+        'order/received': OrderReceived
     };
 
     Router(app, screens);
