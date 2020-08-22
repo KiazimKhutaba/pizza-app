@@ -58,8 +58,8 @@ function Router(app, screens) {
     }
 
 
-    //render(ProductsList);
-    render(OrderReceived);
+    render(ProductsList);
+    //render(OrderReceived);
     window.addEventListener('hashchange', hashChangeHandler);
 }
 

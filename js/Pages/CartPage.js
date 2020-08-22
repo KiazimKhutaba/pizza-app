@@ -1,8 +1,6 @@
 import cartItems from '../var/cart_data.js';
 import { el, log } from '../Core/helpers.js';
 
-
-
 function OrderSummary() {
     
     return /* html */`
@@ -14,7 +12,7 @@ function OrderSummary() {
             <ul>
                 <li>
                     <strong class="text-muted">Order Subtotal</strong>
-                    <strong>$390.00</strong>
+                    <strong>$80.00</strong>
                 </li>
                 <li>
                     <strong class="text-muted">Delivery</strong>
@@ -22,7 +20,7 @@ function OrderSummary() {
                 </li>
                 <li>
                     <strong class="text-muted">Total</strong>
-                    <h5 class="font-weight-bold">$400.00</h5>
+                    <h5 class="font-weight-bold">$90.00 / € ${Math.round(90 / 1.1, 2)}</h5>
                 </li>
             </ul>
             <a href="#!order" class="btn">Checkout</a>
@@ -112,7 +110,7 @@ class CartPage
     		if (value < 100) {
       		value = value + 1;
     		} else {
-    			value =100;
+    			value = 100;
     		}
 
     		$input.val(value);
@@ -120,12 +118,21 @@ class CartPage
     }
 
 
-    render() {
-        return /* html */`
-            <div class="shopping-cart is-active">
-                <!-- Title -->
-                <div class="title">Your Cart</div>
+    /**
+     * 
+     * @param {Array} items cart items
+     */
+    content(items) 
+    {
+        return (
+            0 === items.length 
 
+            ? /* html */`
+                <div class="page__content">
+                    <h2>Your cart is empty :(</h2>
+                </div>
+            ` 
+            : /* html */`
                 <div class="cart__box">
                     <div>
                         ${cartItems.map(CartItem).join('')}
@@ -135,6 +142,18 @@ class CartPage
                         ${OrderSummary()}
                     </div>
                 </div>
+            `
+        );
+    }
+
+
+    render() {
+        return /* html */`
+            <div class="shopping-cart is-active">
+                <!-- Title -->
+                <div class="title">Your Cart</div>
+
+                ${this.content(cartItems)}
             </div>
         `;
     }
