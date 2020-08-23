@@ -13,7 +13,7 @@ const pizzasList = [
         id: 2,
         name: 'Pizza Margherita',
         image: 'pizza-margherita.jpg',
-        desc: 'This classic pizza Margherita, is a pizza in its most basic, but nonetheless delicious, form: dough, pizza sauce, fresh basil, mozzarella and Parmesan cheeses.',
+        desc: 'This classic pizza Margherita, is a pizza in its most basic: dough, pizza sauce, fresh basil, mozzarella and Parmesan cheeses.',
         rating: 5,
         price: 29.95,
         currency: '$'

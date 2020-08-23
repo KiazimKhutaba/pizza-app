@@ -49,6 +49,7 @@ class ProductsList
     }
 
 
+    // arrow function - this refers to ProductsList
     eventProduct = (e) => 
     {
         // handle action buttons events
@@ -69,8 +70,8 @@ class ProductsList
                 price: productData.price
             };
 
-            if ( 'product.add' === action ) {
-                
+            if ( 'product.add' === action ) 
+            {    
                 // write value to markup
                 productCount.textContent = +productCount.textContent + 1; 
 
@@ -81,21 +82,55 @@ class ProductsList
             }
 
 
-            if ( 'product.remove' === action ) {
-
+            if ( 'product.remove' === action ) 
+            {
+                let cartHandleBtn = e.target.nextElementSibling;
                 let count = +productCount.textContent;
-                if (count === 0) return;
+
+                if (count == 0) {
+                    return;
+                }
 
                 productCount.textContent = +productCount.textContent - 1;
                 count =  +productCount.textContent;
+
+                // set base state for cart add/remove button
+                if( count == 0 && cartHandleBtn.dataset.itemsAdded === 'true' ) {
+                    cartHandleBtn.dataset.itemsAdded = 'false';
+                    cartHandleBtn.textContent = cartHandleBtn.dataset.textAdd;
+                    cartHandleBtn.style.background = 'rgba(255, 238, 6, 0.884)';
+                }
 
                 this.remove(product, count);
             }
 
 
-            if ( 'cart.add' === action ) {
-                e.target.disabled = true;
-                e.target.style.background = 'grey';
+            if ( 'cart.handle' === action ) 
+            {
+                let btn = e.target;
+                let count = +productCount.textContent;
+
+                if( count == 0 ) {
+                    alert('Add at least one product, please!');
+                    return;
+                }
+
+                // if product already in cart
+                if( btn.dataset.itemsAdded === 'true' ) {
+                    
+                    productCount.textContent = 0;
+                    btn.dataset.itemsAdded = 'false';
+                    btn.textContent = btn.dataset.textAdd;
+                    btn.style.background = 'rgba(255, 238, 6, 0.884)';
+                    return;
+                }
+
+
+                
+
+                btn.dataset.itemsAdded = 'true';
+                btn.textContent = btn.dataset.textRemove;
+                btn.style.background = 'orange';
             }
         }
     }

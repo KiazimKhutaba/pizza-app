@@ -14,13 +14,13 @@ class Cart
     }
 
 
-    add(id, product) {
-        this.storage.save(id, product);
+    add(product) {
+        this.storage.save(product.id, product);
     }
 
 
-    remove(id) {
-        this.storage.delete(id);
+    remove(product) {
+        this.storage.delete(product.id);
     }
 
 

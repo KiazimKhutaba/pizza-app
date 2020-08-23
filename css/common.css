@@ -1,3 +1,10 @@
+:root {
+    --bp-xl: 1199px;
+    --bp-lg: 991px;
+    --bp-md: 768;
+    --bp-sm: 575px;
+}
+
 .rounded-border {
     border-radius: 5px;
 }
