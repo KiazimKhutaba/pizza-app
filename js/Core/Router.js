@@ -59,8 +59,8 @@ function Router(app, screens) {
     }
 
 
-    render(OrdersHistory);
-    location.hash = '!orders/history';
+    render(ProductsList);
+    //location.hash = '!orders/history';
     //render(OrderReceived);
     window.addEventListener('hashchange', hashChangeHandler);
 }

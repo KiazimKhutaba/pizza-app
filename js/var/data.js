@@ -71,8 +71,7 @@ const pizzasList = [
         rating: 4,
         price: 9.95,
         currency: '$'
-    },
-    
+    }
 ];
 
 export default pizzasList;

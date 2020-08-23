@@ -37,7 +37,7 @@ export function createCartItems(items)
 const items = createCartItems(pizzasList);
 
 const cartItems = [
-    items(1, 3),
+    items(2, 30),
     items(4, 1),
     items(7, 2),
     items(5, 1),
