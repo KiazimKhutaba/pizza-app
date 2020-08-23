@@ -1,8 +1,18 @@
 import cartItems from '../var/cart_data.js';
 import { el, log } from '../Core/helpers.js';
+import LocalStorageDB from '../Core/LocalStorageDB.js';
+import config from '../config.js';
 
-function OrderSummary() {
+
+function OrderSummary(products) {
     
+    const calcOrderTotal = (items) => 
+        items.reduce((total, item) => total + item.price * item.quantity, 0);
+
+    
+    const total = calcOrderTotal(products);
+    const delivery = 10;
+
     return /* html */`
 
         <div class="order-summary">
@@ -12,15 +22,15 @@ function OrderSummary() {
             <ul>
                 <li>
                     <strong class="text-muted">Order Subtotal</strong>
-                    <strong>$80.00</strong>
+                    <strong>${total}</strong>
                 </li>
                 <li>
                     <strong class="text-muted">Delivery</strong>
-                    <strong>$10.00</strong>
+                    <strong>${delivery}</strong>
                 </li>
                 <li>
                     <strong class="text-muted">Total</strong>
-                    <h5 class="font-weight-bold">$90.00 / €${Math.round(90 / 1.1, 2)}</h5>
+                    <h5 class="font-weight-bold">$${total + delivery} / €${Math.round(total / 1.21, 2)}</h5>
                 </li>
             </ul>
             <a href="#!order" class="btn">Checkout</a>
@@ -71,50 +81,50 @@ class CartPage
 
     eventHandler() {
 
-        let minusBtns = Array.from(el('.minus-btn', true))
-        let plusBtns = Array.from(el('.plus-btn', true))
+        // let minusBtns = Array.from(el('.minus-btn', true))
+        // let plusBtns = Array.from(el('.plus-btn', true))
 
 
-        minusBtns.forEach(btn => {
+        // minusBtns.forEach(btn => {
 
-            btn.addEventListener('click', function(e) {
+        //     btn.addEventListener('click', function(e) {
 
                 
-                var $this = el(e.target);
-                var $input = $this.closest('div').find('input');
-                var value = parseInt($input.val());
+        //         var $this = el(e.target);
+        //         var $input = $this.closest('div').find('input');
+        //         var value = parseInt($input.val());
     
-                if (value > 1) {
-                    value = value - 1;
-                } else {
-                    value = 0;
-                }
+        //         if (value > 1) {
+        //             value = value - 1;
+        //         } else {
+        //             value = 0;
+        //         }
     
-                $input.textContent = (value);
+        //         $input.textContent = (value);
     
-            });
-        })
+        //     });
+        // })
 
 
 
-    	el('.plus-btn').addEventListener('click', function(e) {
+    	// el('.plus-btn').addEventListener('click', function(e) {
 
-            e.preventDefault();
+        //     e.preventDefault();
             
-            log(document.querySelectorAll(this));
+        //     log(document.querySelectorAll(this));
 
-    		var $this = el(this);
-    		var $input = $this.closest('div').find('input');
-    		var value = parseInt($input.val());
+    	// 	var $this = el(this);
+    	// 	var $input = $this.closest('div').find('input');
+    	// 	var value = parseInt($input.val());
 
-    		if (value < 100) {
-      		value = value + 1;
-    		} else {
-    			value = 100;
-    		}
+    	// 	if (value < 100) {
+      	// 	value = value + 1;
+    	// 	} else {
+    	// 		value = 100;
+    	// 	}
 
-    		$input.val(value);
-        });
+    	// 	$input.val(value);
+        // });
     }
 
 
@@ -124,8 +134,9 @@ class CartPage
      */
     content(items) 
     {
+
         return (
-            0 === items.length 
+            !items || 0 === items.length
 
             ? /* html */`
                 <div class="page__content">
@@ -135,11 +146,11 @@ class CartPage
             : /* html */`
                 <div class="cart__box">
                     <div>
-                        ${cartItems.map(CartItem).join('')}
+                        ${items.map(CartItem).join('')}
                     </div>
                     
                     <div>
-                        ${OrderSummary()}
+                        ${OrderSummary(items)}
                     </div>
                 </div>
             `
@@ -148,12 +159,18 @@ class CartPage
 
 
     render() {
+
+        const db = new LocalStorageDB(config.APP_NAME);
+        const items = db.fetch('products');
+
+        window.items = items;
+
         return /* html */`
             <div class="shopping-cart is-active">
                 <!-- Title -->
                 <div class="title">Your Cart</div>
 
-                ${this.content(cartItems)}
+                ${this.content(items)}
             </div>
         `;
     }

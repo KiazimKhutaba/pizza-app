@@ -111,11 +111,11 @@ class ProductsList
                 let count = +productCount.textContent;
 
                 if( count == 0 ) {
-                    alert('Add at least one product, please!');
+                    alert('Add at least one item, please!');
                     return;
                 }
 
-                // if product already in cart
+                // if product already in cart - remove
                 if( btn.dataset.itemsAdded === 'true' ) {
                     
                     productCount.textContent = 0;
@@ -126,7 +126,12 @@ class ProductsList
                 }
 
 
-                
+                // add product
+
+                let products = Array.from(this.products.values());
+                log(products);
+
+                db.save('products', products);
 
                 btn.dataset.itemsAdded = 'true';
                 btn.textContent = btn.dataset.textRemove;
