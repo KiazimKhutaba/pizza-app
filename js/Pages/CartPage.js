@@ -41,11 +41,16 @@ function OrderSummary(products) {
 
 function CartItem(data) {
 
-    const { name, image, price, quantity } = data;
+    const { id, name, image, price, quantity } = data;
 
     return /* html */`
 
-        <div class="item">
+        <div class="item"
+            data-id="${id}"
+            data-name="${name}"
+            data-image="${image}"
+            data-price="${price}"
+            data-quantity="${quantity}">
 
             <div class="image">
                 <img class="rounded-border" src="assets/${image}" width="120" height="80" lt="" />
@@ -83,48 +88,6 @@ class CartPage
 
         // let minusBtns = Array.from(el('.minus-btn', true))
         // let plusBtns = Array.from(el('.plus-btn', true))
-
-
-        // minusBtns.forEach(btn => {
-
-        //     btn.addEventListener('click', function(e) {
-
-                
-        //         var $this = el(e.target);
-        //         var $input = $this.closest('div').find('input');
-        //         var value = parseInt($input.val());
-    
-        //         if (value > 1) {
-        //             value = value - 1;
-        //         } else {
-        //             value = 0;
-        //         }
-    
-        //         $input.textContent = (value);
-    
-        //     });
-        // })
-
-
-
-    	// el('.plus-btn').addEventListener('click', function(e) {
-
-        //     e.preventDefault();
-            
-        //     log(document.querySelectorAll(this));
-
-    	// 	var $this = el(this);
-    	// 	var $input = $this.closest('div').find('input');
-    	// 	var value = parseInt($input.val());
-
-    	// 	if (value < 100) {
-      	// 	value = value + 1;
-    	// 	} else {
-    	// 		value = 100;
-    	// 	}
-
-    	// 	$input.val(value);
-        // });
     }
 
 

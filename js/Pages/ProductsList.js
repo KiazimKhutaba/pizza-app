@@ -60,8 +60,8 @@ class ProductsList
             let productCount = el('#product-count-' + productData.id);
             let cartActionBtn = el('#cart-action-btn-' + productData.id);
 
-             // pull the item out of the cart
-             const getProduct = (productId) => this.products.get(+productId);
+            // pull the item out of the cart
+            const getProduct = (productId) => this.products.get(+productId);
 
 
             const db = new LocalStorageDB(config.APP_NAME);
@@ -77,7 +77,7 @@ class ProductsList
 
             if ( 'product.add' === action ) 
             {
-                // write value to markup
+                // write value to DOM
                 productCount.textContent = +productCount.textContent + 1; 
 
                 // get products number
@@ -85,7 +85,7 @@ class ProductsList
                 this.add(product, count);
 
                 if( 'true' == cartActionBtn.dataset.itemsAdded ) {
-                    
+
                     db.save('products', Array.from(this.products.values()));
                 }
 

@@ -52,15 +52,13 @@ function Router(app, screens) {
             else {
                 render(Component);
             }
-
-
             //location.hash = hash;
         }
     }
 
 
-    render(ProductsList);
-    //location.hash = '!orders/history';
+    render(CartPage);
+    //location.hash = '!cart/history';
     //render(OrderReceived);
     window.addEventListener('hashchange', hashChangeHandler);
 }
