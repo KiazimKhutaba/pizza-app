@@ -160,10 +160,9 @@ class CartPage
 
     render() {
 
+        // Todo: dependecy injection
         const db = new LocalStorageDB(config.APP_NAME);
-        const items = db.fetch('products');
-
-        window.items = items;
+        const items = db.fetch('products').filter(product => product.quantity > 0);
 
         return /* html */`
             <div class="shopping-cart is-active">

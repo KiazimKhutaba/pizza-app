@@ -27,7 +27,9 @@ function ProductView(product)
                         <button class="actions__add" data-action="product.add">+</button>
                         <span class="actions__quantity" id="product-count-${id}">0</span>
                         <button class="actions__remove" data-action="product.remove">-</button>
-                        <button class="actions__add-to-cart" 
+                        <button
+                            id="cart-action-btn-${id}"
+                            class="actions__add-to-cart" 
                             data-action="cart.handle" 
                             data-items-added="false" 
                             data-text-remove="Remove"

@@ -58,6 +58,10 @@ class ProductsList
             let productData = e.target.closest('div.product').dataset;
             let action = e.target && e.target.dataset.action; // dataset can be empty
             let productCount = el('#product-count-' + productData.id);
+            let cartActionBtn = el('#cart-action-btn-' + productData.id);
+
+             // pull the item out of the cart
+             const getProduct = (productId) => this.products.get(+productId);
 
 
             const db = new LocalStorageDB(config.APP_NAME);
@@ -70,15 +74,21 @@ class ProductsList
                 price: productData.price
             };
 
+
             if ( 'product.add' === action ) 
-            {    
+            {
                 // write value to markup
                 productCount.textContent = +productCount.textContent + 1; 
 
                 // get products number
                 const count = +productCount.textContent;
-
                 this.add(product, count);
+
+                if( 'true' == cartActionBtn.dataset.itemsAdded ) {
+                    
+                    db.save('products', Array.from(this.products.values()));
+                }
+
             }
 
 
@@ -93,16 +103,23 @@ class ProductsList
 
                 productCount.textContent = +productCount.textContent - 1;
                 count =  +productCount.textContent;
+                
+                this.remove(product, count);
+
+
+                if( 'true' === cartHandleBtn.dataset.itemsAdded ) {
+                    
+                    db.save('products', Array.from(this.products.values()));
+                }
+
 
                 // set base state for cart add/remove button
-                if( count == 0 && cartHandleBtn.dataset.itemsAdded === 'true' ) {
-                    
+                if( count == 0 && 'true' === cartHandleBtn.dataset.itemsAdded ) {
+
                     cartHandleBtn.dataset.itemsAdded = 'false';
                     cartHandleBtn.textContent = cartHandleBtn.dataset.textAdd;
                     cartHandleBtn.style.background = 'rgba(255, 238, 6, 0.884)';
                 }
-
-                this.remove(product, count);
             }
 
 
@@ -122,6 +139,9 @@ class ProductsList
 
                 // if product already in cart - remove
                 if( btn.dataset.itemsAdded === 'true' ) {
+
+                    // remove from map
+                    this.products.delete(productData.id);
                     
                     // remove product from cart completely
                     let products = db.fetch('products');
@@ -150,10 +170,6 @@ class ProductsList
                     btn.style.background = 'rgba(255, 238, 6, 0.884)';
                     return;
                 }
-
-
-                // pull the item out of the cart
-                const getProduct = (productId) => this.products.get(+productId);
 
                 // add product
                 let dbProducts = db.fetch('products') || [];
