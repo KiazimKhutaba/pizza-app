@@ -30,7 +30,7 @@ class LocalStorageDB
      *
      * @param {string} key object key id
      *
-     * @returns {object|null}
+     * @returns {Array|null}
      */
     fetch(key) {
         let data = localStorage.getItem(this.dbPrefix + key);

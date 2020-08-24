@@ -22,15 +22,15 @@ function OrderSummary(products) {
             <ul>
                 <li>
                     <strong class="text-muted">Order Subtotal</strong>
-                    <strong>${total}</strong>
+                    <strong>$${total} / €${Math.round(total / 1.21, 2)}</strong>
                 </li>
                 <li>
                     <strong class="text-muted">Delivery</strong>
-                    <strong>${delivery}</strong>
+                    <strong>$${delivery} / €${Math.round(delivery / 1.21, 2)}</strong>
                 </li>
                 <li>
                     <strong class="text-muted">Total</strong>
-                    <h5 class="font-weight-bold">$${total + delivery} / €${Math.round(total / 1.21, 2)}</h5>
+                    <h5 class="font-weight-bold">$${total + delivery} / €${Math.round((total + delivery) / 1.21, 2)}</h5>
                 </li>
             </ul>
             <a href="#!order" class="btn">Checkout</a>

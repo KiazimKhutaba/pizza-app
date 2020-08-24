@@ -96,6 +96,7 @@ class ProductsList
 
                 // set base state for cart add/remove button
                 if( count == 0 && cartHandleBtn.dataset.itemsAdded === 'true' ) {
+                    
                     cartHandleBtn.dataset.itemsAdded = 'false';
                     cartHandleBtn.textContent = cartHandleBtn.dataset.textAdd;
                     cartHandleBtn.style.background = 'rgba(255, 238, 6, 0.884)';
@@ -108,7 +109,11 @@ class ProductsList
             if ( 'cart.handle' === action ) 
             {
                 let btn = e.target;
+                let productData = e.target.closest('div.product').dataset;
+
                 let count = +productCount.textContent;
+                //let products = Array.from(this.products.values()) || [];
+
 
                 if( count == 0 ) {
                     alert('Add at least one item, please!');
@@ -118,6 +123,27 @@ class ProductsList
                 // if product already in cart - remove
                 if( btn.dataset.itemsAdded === 'true' ) {
                     
+                    // remove product from cart completely
+                    let products = db.fetch('products');
+
+
+                    // if cart contains products
+                    if( products.length > 0 ) {
+
+                        // find product
+                        let product = products.find(product => product.id == productData.id);
+
+                        // if product with given id exists
+                        if( product ) {
+
+                            let cartWithoutProduct = products.filter(product => product.id != productData.id);
+                            db.save('products', cartWithoutProduct);
+                            //log(cartWithoutProduct);
+                        }
+                    }
+                    
+
+                    // update DOM
                     productCount.textContent = 0;
                     btn.dataset.itemsAdded = 'false';
                     btn.textContent = btn.dataset.textAdd;
@@ -126,12 +152,41 @@ class ProductsList
                 }
 
 
+                // pull the item out of the cart
+                const getProduct = (productId) => this.products.get(+productId);
+
                 // add product
+                let dbProducts = db.fetch('products') || [];
+                
+                // if db already contains products
+                if( dbProducts.length > 0 ) {
 
-                let products = Array.from(this.products.values());
-                log(products);
+                    // find product
+                    let product = dbProducts.find(product => product.id == productData.id);
 
-                db.save('products', products);
+                    // if product with given id exists in db
+                    if( product ) {
+
+                        // delete it from db result set, as it contains old quantity
+                        let filteredStorageData = dbProducts.filter(product => product.id != productData.id);
+                        filteredStorageData.push(getProduct(productData.id))
+
+                        // update product with new quantity
+                        db.save('products', filteredStorageData);
+                    }
+                    else {
+                        
+                        // product still does not exist in db, so push it to list and save 
+                        dbProducts.push(getProduct(productData.id));
+                        db.save('products', dbProducts);
+                    }
+                } 
+                else {
+
+                    db.save('products', [getProduct(productData.id)]);
+                }
+
+                //db.save('products', products);
 
                 btn.dataset.itemsAdded = 'true';
                 btn.textContent = btn.dataset.textRemove;
