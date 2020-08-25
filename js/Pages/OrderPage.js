@@ -33,7 +33,7 @@ class OrderPage {
                     </div>
 
                     <div class="order-form__container-item">
-                        <a class="btn btn-submit" href="#!order/received">Order</a>
+                        <a class="btn btn-submit" href="#!order/received">Checkout</a>
                     </div>
 
                 </div>

@@ -26,6 +26,31 @@ class Cart
         return this.products.size;
     }
 
+    /**
+     * 
+     * @returns {number} items count in storage
+    */
+    get countStorage() {
+        return this.all().filter(p => p.quantity > 0).length;
+    }
+
+
+    /**
+     * @returns {Array} products array
+     */
+    get productsList() {
+        return Array.from(this.products.values());
+    }
+
+
+    /**
+     * Loads storage data into Cart products map
+     */
+    loadFromStorage() {
+
+        let products = this.all();
+        products.forEach(product => this.products.set(product.id, product))
+    }
 
     /**
      * @returns {object} one product from map
@@ -39,7 +64,7 @@ class Cart
      * @param {object} product 
      * @param {Number} count 
      */
-    updateProductCount(product, count)
+    updateProductCounter(product, count)
     {
         if( this.products.has(product.id) ) {
 
@@ -57,7 +82,7 @@ class Cart
      * 
      * @param {object} item 
      */
-    add(item) 
+    add(id) 
     {
         let storageProducts = this.all();
                 
@@ -65,14 +90,14 @@ class Cart
         if( storageProducts.length > 0 ) {
 
             // find product
-            let product = storageProducts.find(product => product.id == item.id);
+            let product = storageProducts.find(product => product.id == id);
 
             // if product with given id exists in storage
             if( product ) {
 
                 // delete it from storage result set, as it contains old quantity
-                let filteredStorageData = storageProducts.filter(product => product.id != item.id);
-                filteredStorageData.push(this.getProduct(item.id))
+                let filteredStorageData = storageProducts.filter(product => product.id != id);
+                filteredStorageData.push(this.getProduct(id))
 
                 // update product with new quantity
                 this.putItem(filteredStorageData);
@@ -80,13 +105,13 @@ class Cart
             else {
                 
                 // product still does not exist in db, so push it to list and save 
-                storageProducts.push(this.getProduct(item.id));
+                storageProducts.push(this.getProduct(id));
                 this.putItem(storageProducts);
             }
         } 
         else {
 
-            this.putItem( [ getProduct(item.id) ] );
+            this.putItem( [ this.getProduct(id) ] );
         }
     }
 
@@ -98,7 +123,7 @@ class Cart
      */
     remove(id) {
        
-        // remove from map ???руку
+        // remove from map
         this.products.delete(id);
                     
         let products = this.all();
@@ -116,6 +141,33 @@ class Cart
                 this.putItem(cartWithoutProduct);
             }
         }
+    }
+
+
+    removeDbItem(id) 
+    {
+        let storageProducts = this.all();
+                
+        // if storage already contains products
+        if( storageProducts.length > 0 ) {
+
+            // find product
+            let product = storageProducts.find(product => product.id == id);
+
+            // if product with given id exists in storage
+            if( product ) {
+
+                // delete it from storage result set
+                let filteredStorageData = storageProducts.filter(product => product.id != id);
+
+                this.putItem(filteredStorageData);
+            }
+        }
+    }
+
+
+    clear() {
+        this.storage.delete(Cart.STORAGE_KEY);
     }
 
 
