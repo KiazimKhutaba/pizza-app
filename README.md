@@ -6,7 +6,7 @@ how to create SPA.
 On backend it uses some components from such frameworks as Laravel, CakePHP, Symfony.
 But, mainly, it based on Slim Framework 4.
 
-<img src="https://i.imgur.com/kSrDMLK.jpg" width="560" alt="GetPizza App main page screenshot" />
+<img src="https://i.imgur.com/kSrDMLK.jpg" alt="GetPizza App main page screenshot" />
 
 Heroku deployed app:
 
