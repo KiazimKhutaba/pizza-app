@@ -190,7 +190,7 @@ class CartPage {
                 this.deleteProduct(product);
 
                 if( this.cart.countStorage == 0 ) {
-                    window.location.reload();
+                    el('.cart__content').innerHTML = this.content([]);
                 }
                 else {
                     
@@ -301,7 +301,9 @@ class CartPage {
                 <!-- Title -->
                 <div class="title">Your Cart</div>
 
-                ${this.content(items)}
+                <span class="cart__content">
+                    ${this.content(items)}
+                </span>
             </div>
         `;
     }
