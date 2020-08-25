@@ -23,7 +23,7 @@ Homestead.json
 .phpunit.result.cache
 
 # my
-# .env
+.env
 *.bat
 .env.production
 heroku-push.bat
