@@ -16,14 +16,14 @@ public_html/storage
 public_html/hot
 
 storage/*.key
-.env
+# .env
 Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
 
 # my
-.env
+# .env
 *.bat
 .env.production
 heroku-push.bat
