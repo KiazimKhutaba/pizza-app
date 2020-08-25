@@ -1,0 +1,8 @@
+{
+    "name": "kiazimkhutaba/pizza-app",
+    "description": "Simple JavaScript ES6 / Slim PHP based Pizza delivery app",
+    "type": "project",
+    "require": {
+        "php": "^7.2.0"
+    }
+}
