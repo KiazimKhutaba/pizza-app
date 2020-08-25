@@ -34,4 +34,13 @@ class EntryPointController
         return $response;
     }
 
+
+    public function test(Request $request, Response $response, array $args) 
+    {
+        $response->getBody()->write(
+            'OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO'
+        );
+
+        return $response;
+    }
 }
