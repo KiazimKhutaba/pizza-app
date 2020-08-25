@@ -15,6 +15,12 @@ return function (App $app) {
         
         $group->get('/products', ProductsController::class . ':all' );
 
+        $group->get('/test', function($req, $res) {
+
+            $res->getBody()->write('tettts');
+
+            return $res;
+        });
         //$group->get('/post/{url}', PostController::class . ':index');
     });
 
