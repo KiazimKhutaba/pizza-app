@@ -1,11 +1,11 @@
 <?php
 
-namespace PizzaApp\Controllers;
+namespace PizzaApp\Controllers\API;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Container\ContainerInterface;
-
+use stdClass;
 
 
 class ProductsController
@@ -19,10 +19,17 @@ class ProductsController
     }
 
 
-
+    /**
+     * Return all products
+     */
     public function all(Request $request, Response $response, array $args) 
     {
-        $response->getBody()->write('HELLO');
+        $obj = new stdClass;
+        $obj->name='Test';
+        $obj->var='222';
+        $obj->childs = ['1', '2', '3'];
+
+        $response->getBody()->write(json_encode($obj));
 
         return $response;
     }

@@ -2,15 +2,18 @@
 
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
-use PizzaApp\Controllers\ProductsController;
+use PizzaApp\Controllers\API\ProductsController;
+use PizzaApp\Controllers\EntryPointController;
 
 
 return function (App $app) {
 
+    $app->get('/', EntryPointController::class . ':index' );
+
     // index
     $app->group('/api/v1', function(RouteCollectorProxy $group) {
         
-        $group->get ('/products', ProductsController::class . ':all');
+        $group->get('/products', ProductsController::class . ':all' );
 
         //$group->get('/post/{url}', PostController::class . ':index');
     });
