@@ -8,14 +8,18 @@ use PizzaApp\Controllers\EntryPointController;
 
 return function (App $app) {
 
-    $app->get('/', EntryPointController::class . ':index' );
-
     // index
+    $app->group('', function(RouteCollectorProxy $group) {
+        
+        $group->get('/',  EntryPointController::class . ':index' );
+        $group->get('/test',  EntryPointController::class . ':test' );
+    });
+
+    
+    // api
     $app->group('/api/v1', function(RouteCollectorProxy $group) {
         
         $group->get('/products', ProductsController::class . ':all' );
-
-        //$group->get('/post/{url}', PostController::class . ':index');
     });
 
 
