@@ -27,3 +27,4 @@ git-flow.bat
 .env
 vbin.bat
 .env.production
+heroku-push.bat
