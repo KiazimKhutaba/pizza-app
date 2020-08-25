@@ -1,10 +1,5 @@
 import NotFound from '../Pages/NotFound.js';
 import ProductsList from '../Pages/ProductsList.js';
-import LoginView from '../Pages/LoginView.js';
-import CartPage from '../Pages/CartPage.js';
-import OrderPage from '../Pages/OrderPage.js';
-import OrderReceived from '../Pages/OrderReceived.js';
-import OrdersHistory from '../Pages/OrdersHistory.js';
 
 
 
@@ -57,9 +52,8 @@ function Router(app, screens) {
     }
 
 
-    render(CartPage);
-    //location.hash = '!cart/history';
-    //render(OrderReceived);
+    render(ProductsList);
+    
     window.addEventListener('hashchange', hashChangeHandler);
 }
 

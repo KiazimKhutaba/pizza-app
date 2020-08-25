@@ -6,7 +6,7 @@ const pizzasList = [
         image: 'greek-pizza.jpg',
         desc: 'Pizza just got a delicious upgrade! This is loaded with fresh veggies and a satisfying greek flavor.',
         rating: 4,
-        price: 34.15,
+        price: 15.00,
         currency: '$'
     },
     {
@@ -15,7 +15,7 @@ const pizzasList = [
         image: 'pizza-margherita.jpg',
         desc: 'This classic pizza Margherita, is a pizza in its most basic: dough, pizza sauce, fresh basil, mozzarella and Parmesan cheeses.',
         rating: 5,
-        price: 29.95,
+        price: 10.00,
         currency: '$'
     },
     {
@@ -24,7 +24,7 @@ const pizzasList = [
         image: 'pizza-marinara.jpg',
         desc: 'Pizza marinara is classic Neapolitan pizza. There’s no cheese, so it’s all about the tomatoes, garnished simply with garlic and oregano. Buon appetito!',
         rating: 5,
-        price: 28.95,
+        price: 9.00,
         currency: '$'
     },
     {
@@ -33,7 +33,7 @@ const pizzasList = [
         image: 'pizza-carbonara.jpg',
         desc: 'This easy luxe pizza is ready in a flash.',
         rating: 4,
-        price: 12.85,
+        price: 15.00,
         currency: '$'
     },
     {
@@ -42,7 +42,7 @@ const pizzasList = [
         image: 'pizza-prosciutto.jpg',
         desc: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio odio, earum molestiae ',
         rating: 4,
-        price: 34.15,
+        price: 14.00,
         currency: '$'
     },
     {
@@ -51,7 +51,7 @@ const pizzasList = [
         image: 'pizza-montanara.png',
         desc: 'Fried pizza sounds like novelty food. But when it’s properly done, this centuries-old tradition produces a pie that is crisp, chewy, and far from greasy.',
         rating: 4,
-        price: 29.95,
+        price: 20.00,
         currency: '$'
     },
     {
@@ -60,7 +60,7 @@ const pizzasList = [
         image: 'pizza-romana.jpg',
         desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, possimus',
         rating: 5,
-        price: 28.95,
+        price: 18.00,
         currency: '$'
     },
     {
@@ -69,7 +69,7 @@ const pizzasList = [
         image: 'pizza-americana.jpg',
         desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, possimus',
         rating: 4,
-        price: 9.95,
+        price: 8.00,
         currency: '$'
     }
 ];
