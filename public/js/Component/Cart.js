@@ -1,13 +1,13 @@
 import LocalStorageDB from '../Core/LocalStorageDB.js';
 
+
+const STORAGE_KEY = 'products';
+
 /**
  * PizzaApp Cart
  */
 class Cart
 {
-
-    static STORAGE_KEY = 'products';
-
     /**
      * 
      * @param {LocalStorageDB} storage put all user selected producs into localStorage
@@ -167,7 +167,7 @@ class Cart
 
 
     clear() {
-        this.storage.delete(Cart.STORAGE_KEY);
+        this.storage.delete(STORAGE_KEY);
     }
 
 
@@ -175,7 +175,7 @@ class Cart
      * Put all products list to storage
      */
     putAll() {
-        return this.storage.save(Cart.STORAGE_KEY, Array.from(this.products.values()));
+        return this.storage.save(STORAGE_KEY, Array.from(this.products.values()));
     }
 
 
@@ -184,7 +184,7 @@ class Cart
      * @param {object} item 
      */
     putItem(item) {
-        this.storage.save(Cart.STORAGE_KEY, item);
+        this.storage.save(STORAGE_KEY, item);
     }
 
 
@@ -192,7 +192,7 @@ class Cart
      * @returns {array} Get all products from storage they if exists, otherwise empty array
      */
     all() {
-        return this.storage.fetch(Cart.STORAGE_KEY) || [];
+        return this.storage.fetch(STORAGE_KEY) || [];
     }
 
 }
