@@ -23,7 +23,6 @@ Homestead.json
 .phpunit.result.cache
 
 # my
-git-flow.bat
 .env
-vbin.bat
+*.bat
 .env.production
