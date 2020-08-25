@@ -2,6 +2,7 @@
 
 namespace PizzaApp\Controllers\API;
 
+use PizzaApp\Models\Product;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Container\ContainerInterface;
@@ -23,12 +24,7 @@ class ProductsController
      */
     public function all(Request $request, Response $response, array $args) 
     {
-        $obj = new \stdClass;
-        $obj->name='Test';
-        $obj->var='222';
-        $obj->childs = ['1', '2', '3'];
-
-        $response->getBody()->write(json_encode($obj));
+        $response->getBody()->write(json_encode(Product::all()));
 
         return $response;
     }

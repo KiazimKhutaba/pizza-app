@@ -11,8 +11,7 @@ function ProductView(product)
             data-id="${id}"
             data-name="${name}"
             data-image="${image}"
-            data-price="${price}"
-            data-currency="${currency}">
+            data-price="${price}">
 
             <img src="assets/${image}" alt="pizza" class="product__image">
             <div class="product__text">
@@ -21,7 +20,7 @@ function ProductView(product)
                 <div class="product__description">${desc}</div>
                 <div class="product__bottom">
                     <div class="product__price">
-                        <span class="product__price-currency">${currency}</span>${price}
+                        <span class="product__price-currency">$</span>${price}
                     </div>
                     <div class="actions">
                         <button class="actions__add" data-action="product.add">+</button>

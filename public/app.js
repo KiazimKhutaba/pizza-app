@@ -13,9 +13,6 @@ function main() {
     let app = el('#app');
 
 
-    fetch('/api/v1/products').then(res => res.json()).then(log);
-
-
     const screens = {
         'main': ProductsList,
         'cart': CartPage,

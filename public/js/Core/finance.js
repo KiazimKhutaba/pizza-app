@@ -1,4 +1,6 @@
 
+export const ExchangeRate = 1.21;
+
 export const priceInEuro = (priceInDollars, exchangeRate) => 
     (priceInDollars * exchangeRate).toFixed(2);
 

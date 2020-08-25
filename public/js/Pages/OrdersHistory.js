@@ -1,16 +1,6 @@
-import userOrders from "../var/user_orders.js";
-import { format_date } from "../Core/helpers.js";
+import { format_date, log, el } from "../Core/helpers.js";
+import {calcOrderTotal, priceInEuro, ExchangeRate } from '../Core/finance.js';
 
-
-
-function calcTotalPrice(products) 
-{
-    const total = products.reduce(
-        (total, current) => total + (current.price * current.quantity), 0
-    );
-    
-    return Math.round(total, 2);
-}
 
 
 function ProductItem({ name, price, quantity }) 
@@ -25,15 +15,15 @@ function ProductItem({ name, price, quantity })
 }
 
 
-function OrderHistoryItem({ id, products, date })
+function OrderHistoryItem({id, products, date })
 {
-    const totalPrice = calcTotalPrice(products);
+    const totalPrice = calcOrderTotal(products);
 
     return /* html */`
         <tr>
             <td>#${id}</td>
             <td>${products.map(ProductItem).join('')}</td>
-            <td>$${totalPrice} / €${totalPrice}</td>
+            <td>$${totalPrice} / €${priceInEuro(totalPrice, ExchangeRate)}</td>
             <td>${format_date(date)}</td>
         </tr>
     `;
@@ -43,12 +33,48 @@ function OrderHistoryItem({ id, products, date })
 
 class OrdersHistory
 {
+
+    constructor() {
+        
+    }
+
+
+    eventHandler() {
+        
+        fetch('/api/v1/orders')
+            .then(res => res.json())
+            .then(orders => {
+
+                let list = orders.map(order => {
+                    
+                    const id = order.id;
+                    const products = JSON.parse(order.products);
+                    const date = new Date(order.created_at);
+
+                    return OrderHistoryItem({id, products, date})
+
+                }).join('');
+
+
+                if( 0 === list.length ) {
+
+                    el('.page__content').innerHTML = /* html */`
+                        <p>Orders history empty!</p>
+                    `;
+                }
+                else {
+                    el('.orders__history').innerHTML = list;
+                }
+            });
+    }
+
+
     render() {
         return /* html */`
             <div class="page">
                 <div class="page__title">Orders History</div>
                 
-                <div class="page__body">
+                <div class="page__content">
                     
                     <table>
                         <thead>
@@ -59,8 +85,8 @@ class OrdersHistory
                                 <th>Order Date</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            ${userOrders.map(OrderHistoryItem).join('')}
+                        <tbody class="orders__history">
+                           
                         </tbody>
                     </table>
 
