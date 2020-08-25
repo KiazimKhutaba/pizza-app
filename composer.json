@@ -2,7 +2,26 @@
     "name": "kiazimkhutaba/pizza-app",
     "description": "Simple JavaScript ES6 / Slim PHP based Pizza delivery app",
     "type": "project",
+    "autoload": {
+        "psr-4": {
+            "PizzaApp\\": "app/",
+            "PizzaApp\\Tests\\": "tests/"
+        },
+        "files": ["app/functions.php"]
+    },
     "require": {
-        "php": "^7.2.0"
+        "php": "^7.2.0",
+        "slim/slim": "^4.5",
+        "twig/twig": "^3.0",
+        "vlucas/phpdotenv": "^5.1",
+        "slim/psr7": "^1.1",
+        "php-di/php-di": "^6.2",
+        "illuminate/database": "^7.25"
+    },
+    "require-dev": {
+        "robmorgan/phinx": "^0.12.3",
+        "fzaninotto/faker": "^1.9",
+        "psy/psysh": "@stable",
+        "phpunit/phpunit": "8"
     }
 }

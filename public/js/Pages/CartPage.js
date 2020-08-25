@@ -62,7 +62,7 @@ function CartItem(product) {
             data-quantity="${quantity}">
 
             <div class="image">
-                <img class="rounded-border" src="client-app/assets/${image}" width="120" height="80" lt="" />
+                <img class="rounded-border" src="assets/${image}" width="120" height="80" lt="" />
             </div>
 
             <div class="description">
@@ -71,11 +71,11 @@ function CartItem(product) {
 
             <div class="quantity">
                 <button class="plus-btn" type="button" name="button">
-                    <img src="client-app/assets/icons/cart/plus.svg" alt="" class="__plus" />
+                    <img src="assets/icons/cart/plus.svg" alt="" class="__plus" />
                 </button>
                 <span id="product-counter-${id}" style="padding: 0 10px">${quantity}</span>
                 <button class="minus-btn" type="button" name="button">
-                    <img src="client-app/assets/icons/cart/minus.svg" alt="" class="__minus"/>
+                    <img src="assets/icons/cart/minus.svg" alt="" class="__minus"/>
                 </button>
             </div>
 

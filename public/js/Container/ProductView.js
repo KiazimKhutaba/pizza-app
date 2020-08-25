@@ -14,7 +14,7 @@ function ProductView(product)
             data-price="${price}"
             data-currency="${currency}">
 
-            <img src="client-app/assets/${image}" alt="pizza" class="product__image">
+            <img src="assets/${image}" alt="pizza" class="product__image">
             <div class="product__text">
                 <div class="product__name">${name}</div>
                 ${RatingStars(rating)}

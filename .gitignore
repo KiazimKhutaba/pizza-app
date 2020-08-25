@@ -21,4 +21,9 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
+
+# my
 git-flow.bat
+.env
+vbin.bat
+.env.production
