@@ -23,5 +23,10 @@
         "fzaninotto/faker": "^1.9",
         "psy/psysh": "@stable",
         "phpunit/phpunit": "8"
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ]
     }
 }
