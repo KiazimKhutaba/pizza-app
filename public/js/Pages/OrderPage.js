@@ -48,12 +48,21 @@ class OrderPage {
         .then(res => res.json())
         .then(data => {
            
-            if( 100 === data.code ) {
-                location.hash = '!order/received';
+
+            switch( data.code )
+            {
+                case 200:
+                    location.hash = '!order/received';
+                    break;
+
+                case 100:
+                    data.errors.forEach(alert);
+                    break;
+
+                default:
+                    alert('Something goes wrong! Please, wait little, and try again!')
             }
-            else {
-                alert('Something goes wrong! Please, wait little, and try again!')
-            }
+
         });
 
     }
@@ -68,30 +77,34 @@ class OrderPage {
 
                 <div class="order-form__container">
 
+                    <form action="#">
+                    
                     <div class="order-form__container-item">
                         <label for="uname">Name</label>
-                        <input type="text" id="uname" placeholder="John Doe"/>
+                        <input type="text" id="uname" placeholder="John Doe" required/>
                     </div>
 
                     
                     <div class="order-form__container-item">
                         <label for="phone">Phone</label>
-                        <input type="text" id="phone" placeholder="+1 (234) 567-89-00" />
+                        <input type="text" id="phone" placeholder="+1 (234) 567-89-00" required/>
                     </div>
 
                     <div class="order-form__container-item">
                         <label for="address">Address</label>
-                        <input type="text" id="address" placeholder="Street, Home" />
+                        <input type="text" id="address" placeholder="Street, Home" required/>
                     </div>
 
                     <div class="order-form__container-item">
                         <label for="instructions">Additional instructions</label>
-                        <textarea type="text" id="instructions"  rows="6" placeholder="Some text"></textarea>
+                        <textarea type="text" id="instructions"  rows="6" placeholder="Some text" required></textarea>
                     </div>
 
                     <div class="order-form__container-item">
                         <a class="btn btn-submit" id="checkout" href="#!order/received">Checkout</a>
                     </div>
+
+                    </form>
 
                 </div>
 
