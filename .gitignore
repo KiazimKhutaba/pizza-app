@@ -25,5 +25,6 @@ Homestead.json
 # my
 .env
 *.bat
+/bin/
 .env.production
 heroku-push.bat
