@@ -3,7 +3,7 @@ import LocalStorageDB from '../Core/LocalStorageDB.js';
 import config from '../config.js';
 import Cart from '../Component/Cart.js';
 import { priceInEuro, calcOrderTotal, calcProductTotal } from '../Core/finance.js';
-import '../../css/shopping-cart.css'
+import '../../style/shopping-cart.css';
 
 
 

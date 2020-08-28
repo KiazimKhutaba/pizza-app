@@ -18,7 +18,7 @@ class ProductsList {
 
     updateProductList() 
     {
-        fetch('/api/v1/products')
+        fetch(config.BASE_URL + '/api/v1/products')
             .then(res => res.json())
             .then(list =>
                 el('.products-list__items').innerHTML = list.map(ProductView).join('')

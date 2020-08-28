@@ -27,8 +27,10 @@ Homestead.json
 *.bat
 /bin/
 .env.production
-heroku-push.bat
-/public/assets
+
+/public/assets/
+/public/css/
 /public/*.js
 /public/favicon.ico
-/public/css/*
+
+/frontapp/dist/
