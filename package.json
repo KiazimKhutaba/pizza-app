@@ -1,7 +1,7 @@
 {
     "name": "getpizza2020.herokuapp.com",
     "version": "1.0.0",
-    "main": "public/app.js",
+    "main": "webapp/app.js",
     "repository": "https://github.com/KiazimKhutaba/pizza-app.git",
     "author": "Kiazim Khutaba <github.com/KiazimKhutaba>",
     "license": "MIT",
@@ -14,8 +14,11 @@
         "@babel/plugin-proposal-class-properties": "^7.10.4",
         "@babel/preset-env": "^7.11.0",
         "babel-loader": "^8.1.0",
+        "copy-webpack-plugin": "^6.0.3",
+        "css-loader": "^4.2.2",
         "html-webpack-plugin": "^4.3.0",
         "mini-css-extract-plugin": "^0.10.1",
+        "style-loader": "^1.2.1",
         "webpack": "^4.44.1",
         "webpack-cli": "^3.3.12"
     }

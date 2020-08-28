@@ -1,9 +1,10 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 
 module.exports = {
-    entry: path.resolve(__dirname, 'public/app.js'),
+    entry: path.resolve(__dirname, 'webapp/app.js'),
     output: {
         path: path.resolve(__dirname, 'public'),
         filename: 'app.bundle.js'
@@ -23,7 +24,19 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+                use: [
+                    // style-loader
+                    { loader: 'style-loader' },
+                    // css-loader
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            url: false
+                        }
+                    },
+                    // // sass-loader
+                    // { loader: 'sass-loader' }
+                ]
             },
         ]
     },
@@ -42,9 +55,15 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: '[name].css',
-        })
+        }),
         // new HtmlWebpackPlugin({
         //     template: 'index.html'
-        // })
+        // }),
+        new CopyPlugin({
+            patterns: [
+                { from: 'webapp/assets', to: 'assets' },
+                { from: 'webapp/favicon.ico', to: 'favicon.ico' }
+            ],
+        }),
     ]
 };
